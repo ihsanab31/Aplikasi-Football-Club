@@ -4,13 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.ofal.ihsan.pelatihan.R.array.*
-import com.ofal.ihsan.pelatihan.adapter.RecyclerViewAdapter
-import com.ofal.ihsan.pelatihan.model.Item
+import com.ofal.ihsan.pelatihan.adapter.TeamAdapter
+import com.ofal.ihsan.pelatihan.model.Team
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
-    private var items : MutableList<Item> = mutableListOf()
+    private var items : MutableList<Team> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         initData()
 
         club_list.layoutManager = LinearLayoutManager(this)
-        club_list.adapter = RecyclerViewAdapter(this, items) {itemClicked(it)}
+        club_list.adapter = TeamAdapter(this, items) {itemClicked(it)}
 
     }
 
@@ -28,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         val description = resources.getStringArray(club_description)
         items.clear()
         for (i in name.indices) {
-            items.add(Item(name[i],
+            items.add(Team(name[i],
                     image.getResourceId(i, 0), description[i]))
         }
 
         image.recycle()
     }
-    private fun itemClicked(items: Item){
+    private fun itemClicked(items: Team){
         startActivity<DetailActivity>(DetailActivity.JUDUL to items.name, DetailActivity.GAMBAR to items.image, DetailActivity.DESKRIPSI to items.description)
     }
 }

@@ -13,4 +13,4 @@ import kotlinx.android.parcel.Parcelize
  * This class for item
  */
 @Parcelize
-data class Item (val name: String?, val image:Int?, val description: String?) : Parcelable
+data class Team (val name: String?, val image:Int?, val description: String?) : Parcelable

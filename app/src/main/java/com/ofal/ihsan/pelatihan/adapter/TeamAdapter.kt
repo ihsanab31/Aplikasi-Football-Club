@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.ofal.ihsan.pelatihan.R.layout.item_list
-import com.ofal.ihsan.pelatihan.model.Item
+import com.ofal.ihsan.pelatihan.model.Team
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_list.*
 
@@ -20,8 +20,8 @@ import kotlinx.android.synthetic.main.item_list.*
  * ------------------------------
  * This class for list item
  */
-class RecyclerViewAdapter(private val context: Context, private val items: List<Item>, private val listener: (Item)-> Unit)
-    : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(){
+class TeamAdapter(private val context: Context, private val items: List<Team>, private val listener: (Team)-> Unit)
+    : RecyclerView.Adapter<TeamAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             ViewHolder(LayoutInflater.from(context).inflate(item_list, parent, false))
@@ -37,7 +37,7 @@ class RecyclerViewAdapter(private val context: Context, private val items: List<
     class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
             LayoutContainer{
 
-        fun bindItem(items: Item, listener: (Item) -> Unit) {
+        fun bindItem(items: Team, listener: (Team) -> Unit) {
             name.text = items.name
             Glide.with(containerView).load(items.image).into(image)
             containerView.setOnClickListener { listener(items) }
